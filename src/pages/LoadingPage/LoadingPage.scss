@@ -1,0 +1,127 @@
+@use "../../index.scss" as styles;
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .background-top-half,
+  .background-bottom-half {
+    position: fixed;
+    width: 100%;
+    height: 50vh;
+    background-color: #000000;
+    z-index: 10;
+  }
+
+  .background-top-half {
+    top: 0;
+  }
+
+  .background-bottom-half {
+    bottom: 0;
+  }
+
+  .loading-screen-info-container {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+
+    .intro-message-container {
+      color: white;
+      font-size: 24px;
+      font-weight: 500;
+      opacity: 0;
+      text-align: center;
+    }
+
+    .loader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .architectural-loader {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .loader-element {
+        position: absolute;
+        background-color: white;
+
+        &:nth-child(1) {
+          width: 60px;
+          height: 2px;
+          transform-origin: center;
+        }
+
+        &:nth-child(2) {
+          width: 2px;
+          height: 60px;
+          transform-origin: center;
+        }
+
+        &:nth-child(3) {
+          width: 40px;
+          height: 40px;
+          border: 2px solid white;
+          background: transparent;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .loader-percentage {
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .loading-screen {
+    .loading-screen-info-container {
+      gap: 32px;
+
+      .intro-message-container {
+        font-size: 20px;
+      }
+
+      .architectural-loader {
+        width: 50px;
+        height: 50px;
+
+        .loader-element {
+          &:nth-child(1) {
+            width: 50px;
+          }
+
+          &:nth-child(2) {
+            height: 50px;
+          }
+
+          &:nth-child(3) {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+    }
+  }
+}
